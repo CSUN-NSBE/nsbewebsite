@@ -1,113 +1,111 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../assets/css/fontawesome-all.min.css";
+import csunlandscape from "../images/FORNSBEcsunlandscapepic.jpg";
+import { events } from "../data/events";
 
-const navLinks = [
-  { to: "/team", label: "Team" },
-  { to: "/vision", label: "Vision" },
-  { to: "/sponsorship", label: "Sponsorship" },
-  { to: "/events", label: "Events" },
-  { to: "/resources", label: "Resources" },
+const highlights = [
+  {
+    icon: "fa-briefcase",
+    title: "Career Opportunities",
+    description:
+      "Access to internships, scholarships, and connections with top engineering companies.",
+  },
+  {
+    icon: "fa-chart-line",
+    title: "Professional Development",
+    description:
+      "Build leadership, networking, and technical skills through workshops and conferences.",
+  },
+  {
+    icon: "fa-users",
+    title: "Community & Belonging",
+    description:
+      "Join a family of Black STEM students uplifting each other academically and personally.",
+  },
 ];
 
-function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+function Home() {
   return (
-    <header className="sticky top-0 z-50 bg-black text-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-lg font-bold tracking-wide"
-          onClick={() => setMenuOpen(false)}
-        >
-          <span className="text-gold">CSUN</span>
-          <span>&bull; NSBE</span>
-        </Link>
+    <div>
+      <section
+        className="relative flex min-h-[520px] items-end bg-cover bg-center text-white"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.75)), url(${csunlandscape})`,
+        }}
+      >
+        <div className="mx-auto w-full max-w-7xl px-6 pb-16 pt-32">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-gold">
+            Building Black Leaders.
+          </p>
+          <h1 className="max-w-2xl text-4xl font-extrabold leading-tight sm:text-5xl">
+            Empowering Black Engineers. Impacting Communities.
+          </h1>
+          <p className="mt-4 max-w-xl text-white/85">
+            To increase the number of culturally responsible Black engineers
+            who excel academically, succeed professionally, and positively
+            impact the community.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <Link
+              to="/vision"
+              className="rounded bg-maroon px-6 py-3 font-semibold hover:bg-maroon-light transition-colors"
+            >
+              Our Mission
+            </Link>
+            <Link
+              to="/resources"
+              className="rounded border border-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-colors"
+            >
+              Get Involved
+            </Link>
+          </div>
+        </div>
+      </section>
 
-        <nav aria-label="Primary navigation" className="hidden md:block">
-          <ul className="flex items-center gap-6 text-sm font-medium">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <NavLink
-                  to={link.to}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-gold border-b-2 border-gold pb-1"
-                      : "text-white/90 hover:text-gold transition-colors pb-1"
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              </li>
+      <section className="mx-auto max-w-7xl px-6 py-14">
+        <div className="grid gap-8 sm:grid-cols-3">
+          {highlights.map((item) => (
+            <div key={item.title} className="text-center sm:text-left">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-maroon/10 text-maroon sm:mx-0">
+                <i className={`fas ${item.icon} text-xl`} aria-hidden="true"></i>
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-maroon">{item.title}</h3>
+              <p className="text-sm text-gray-600">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-black py-14 text-white">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="text-2xl font-bold">Upcoming Events</h2>
+            <Link to="/events" className="text-sm font-semibold text-gold hover:underline">
+              View all events &rarr;
+            </Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {events.slice(0, 4).map((event) => (
+              <div key={event.id} className="rounded-lg bg-white/5 p-4">
+                <div className="mb-3 inline-block rounded bg-maroon px-3 py-1 text-xs font-bold uppercase">
+                  {event.date.month} {event.date.day}
+                </div>
+                <h3 className="mb-1 text-sm font-semibold">{event.title}</h3>
+                <p className="text-xs text-white/60">{event.time}</p>
+                <p className="text-xs text-white/60">{event.location}</p>
+              </div>
             ))}
-            <li>
-              <Link
-                to="/sponsorship"
-                className="rounded bg-maroon px-4 py-2 font-semibold hover:bg-maroon-light transition-colors"
-              >
-                Donate
-              </Link>
-            </li>
-          </ul>
-        </nav>
+          </div>
+        </div>
+      </section>
 
-        <button
-          type="button"
-          className="flex flex-col justify-center gap-1.5 md:hidden"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span
-            className={`block h-0.5 w-6 bg-white transition-transform ${
-              menuOpen ? "translate-y-2 rotate-45" : ""
-            }`}
-          ></span>
-          <span
-            className={`block h-0.5 w-6 bg-white transition-opacity ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          ></span>
-          <span
-            className={`block h-0.5 w-6 bg-white transition-transform ${
-              menuOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          ></span>
-        </button>
-      </div>
-
-      {menuOpen && (
-        <nav aria-label="Mobile navigation" className="border-t border-white/10 md:hidden">
-          <ul className="flex flex-col gap-1 px-6 py-4 text-sm font-medium">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <NavLink
-                  to={link.to}
-                  onClick={() => setMenuOpen(false)}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "block py-2 text-gold"
-                      : "block py-2 text-white/90 hover:text-gold transition-colors"
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
-            <li className="pt-2">
-              <Link
-                to="/sponsorship"
-                onClick={() => setMenuOpen(false)}
-                className="block rounded bg-maroon px-4 py-2 text-center font-semibold hover:bg-maroon-light transition-colors"
-              >
-                Donate
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      )}
-    </header>
+      <section className="bg-maroon py-8 text-center text-white">
+        <p className="text-lg font-semibold">
+          Your Network. Your Legacy. <span className="text-gold">Your NSBE.</span>
+        </p>
+      </section>
+    </div>
   );
 }
 
-export default Nav;
+export default Home;
