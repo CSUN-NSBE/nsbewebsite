@@ -3,104 +3,119 @@ import React, { useState } from "react";
 import "../assets/css/main.css";
 import "./Team.css";
 
-import eboardPhoto from "../images/eboardPHOTO.jpg";
-import tabby2526 from "../images/tabby_ceb2526.jpg";
-import sherry2526 from "../images/sherry_ceb2526.jpg";
+import teamData from "../data/teamData";
 
-const executiveBoards = [
-  {
-    id: "2025-26",
-    label: "2025-2026",
-    members: [
-      {
-        id: "tabitha-sulaiman",
-        name: "Tabitha Sulaiman",
-        position: "President",
-        image: tabby2526,
-      },
-      {
-        id: "sherifat-sole",
-        name: "Sherifat Solebo",
-        position: "Academic Excellence (A.E.X.) Chair",
-        image: sherry2526,
-      },
-    ],
-  },
-];
+const { executiveBoards } = teamData;
 
 function OfficerCard({ officer }) {
-  return (
-    <article className="officer-card">
-      <img
-        className="officer-image"
-        src={officer.image}
-        alt={`${officer.name}, ${officer.position}`}
-        loading="lazy"
-      />
+	return (
+		<article className="officer-card">
+			{officer.image ? (
+				<img
+					className="officer-image"
+					src={officer.image}
+					alt={officer.name !== "Name pending" ? officer.name : ""}
+					loading="lazy"
+				/>
+			) : (
+				<div
+					className="officer-image officer-image-placeholder"
+					aria-hidden="true"
+				>
+					<span>
+						{officer.name && officer.name !== "Name pending"
+							? officer.name.charAt(0)
+							: "?"}
+					</span>
+				</div>
+			)}
 
-      <div className="officer-information">
-        <h3>{officer.name}</h3>
-        <p>{officer.position}</p>
-      </div>
-    </article>
-  );
+			<div className="officer-info">
+				<h3>{officer.name}</h3>
+
+				{officer.position && <p>{officer.position}</p>}
+			</div>
+		</article>
+	);
 }
 
 function Team() {
-  const [selectedYear, setSelectedYear] = useState("2025-26");
+	const [selectedYear, setSelectedYear] = useState(
+		executiveBoards[0]?.id ?? ""
+	);
 
-  const selectedBoard = executiveBoards.find(
-    (board) => board.id === selectedYear
-  );
+	const selectedBoard =
+		executiveBoards.find((board) => board.id === selectedYear) ??
+		executiveBoards[0];
 
-  return (
-    <div className="team-page">
-      <main className="team-main">
-        <section className="team-heading-section team-container">
-          <h1>Meet Our Executive Board</h1>
-        </section>
+	return (
+		<div className="team-page">
+			<main className="team-main">
+				<section className="team-heading-section team-container">
+					<p className="team-eyebrow">CSUN NSBE</p>
 
-        <section className="team-photo-section team-container">
-          <img
-            className="team-group-photo"
-            src={eboardPhoto}
-            alt="CSUN NSBE executive board"
-          />
-        </section>
+					<h1>Meet Our Executive Board</h1>
 
-        <section className="board-selector-section team-container">
-          <label htmlFor="board-year">
-            Select Executive Board Year:
-          </label>
+					<p className="team-heading-description">
+						Meet the students helping lead the CSUN chapter of the National
+						Society of Black Engineers.
+					</p>
+				</section>
 
-          <select
-            id="board-year"
-            value={selectedYear}
-            onChange={(event) => setSelectedYear(event.target.value)}
-          >
-            {executiveBoards.map((board) => (
-              <option key={board.id} value={board.id}>
-                {board.label} E-Board
-              </option>
-            ))}
-          </select>
-        </section>
+				<section className="board-selector-section team-container">
+					<label htmlFor="board-year">Board Year</label>
 
-        <section className="executive-board-section team-container">
-          <h2>
-            Chapter Executive Board{" "}
-            <span>{selectedBoard.label}</span>
-          </h2>
+					<select
+						id="board-year"
+						value={selectedYear}
+						onChange={(event) => setSelectedYear(event.target.value)}
+					>
+						{executiveBoards.map((board) => (
+							<option key={board.id} value={board.id}>
+								{board.label}
+							</option>
+						))}
+					</select>
+				</section>
 
-          <div className="officer-grid">
-            {selectedBoard.members.map((officer) => (
-              <OfficerCard key={officer.id} officer={officer} />
-            ))}
-          </div>
-        </section>
-      </main>
-    </div>
-  );
+				{selectedBoard && (
+					<>
+						{selectedBoard.groupPhoto && (
+							<section
+								className="team-photo-section team-container"
+								aria-label={`${selectedBoard.label} CSUN NSBE executive board`}
+							>
+								<img
+									className="team-group-photo"
+									src={selectedBoard.groupPhoto}
+									alt={`${selectedBoard.label} CSUN NSBE executive board`}
+								/>
+							</section>
+						)}
+
+						<section className="executive-board-section team-container">
+							<div className="executive-board-heading">
+								<p>Chapter Executive Board</p>
+								<h2>{selectedBoard.label}</h2>
+							</div>
+
+							{selectedBoard.members.length > 0 ? (
+								<div className="officer-grid">
+									{selectedBoard.members.map((officer) => (
+										<OfficerCard key={officer.id} officer={officer} />
+									))}
+								</div>
+							) : (
+								<p className="no-board-members">
+									Executive board information for this year will be added soon.
+								</p>
+							)}
+						</section>
+					</>
+				)}
+			</main>
+		</div>
+	);
 }
 
 export default Team;

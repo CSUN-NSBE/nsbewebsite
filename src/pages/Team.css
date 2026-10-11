@@ -1,145 +1,267 @@
 .team-page {
-  min-height: 100vh;
-  background: #ffffff;
-  color: #222222;
+	min-height: 100vh;
+	background: #ffffff;
+	color: #333333;
 }
 
 .team-main {
-  padding: 3rem 1.25rem 5rem;
+	padding-bottom: 5rem;
 }
 
 .team-container {
-  width: min(100%, 1100px);
-  margin: 0 auto;
+	width: min(100% - 2rem, 1100px);
+	margin-left: auto;
+	margin-right: auto;
 }
 
-/* Page heading */
+/* Heading */
 
 .team-heading-section {
-  text-align: center;
+	padding-top: 4rem;
+	text-align: center;
+}
+
+.team-eyebrow {
+	margin: 0 0 0.5rem;
+	color: #8b0000;
+	font-family: "Raleway", Helvetica, sans-serif;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
 }
 
 .team-heading-section h1 {
-  margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  line-height: 1.2;
+	margin: 0;
+	color: #590000;
+	font-size: clamp(2rem, 5vw, 3rem);
+	line-height: 1.2;
 }
 
-/* Group photograph */
+.team-heading-description {
+	max-width: 650px;
+	margin: 1rem auto 0;
+	color: #666666;
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
+/* Group photo */
 
 .team-photo-section {
-  margin-top: 2rem;
+	margin-top: 2.5rem;
 }
 
 .team-group-photo {
-  display: block;
-  width: min(100%, 850px);
-  height: auto;
-  margin: 0 auto;
-  border-radius: 6px;
+	display: block;
+	width: 100%;
+	max-height: 620px;
+	object-fit: cover;
+	border-radius: 8px;
 }
 
-/* Board selector */
+/* Board year */
 
 .board-selector-section {
-  width: min(100%, 850px);
-  margin-top: 1rem;
+	width: min(100% - 2rem, 320px);
+	margin-top: 2rem;
 }
 
 .board-selector-section label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+	display: block;
+	margin-bottom: 0.5rem;
+	color: #590000;
+	font-family: "Raleway", Helvetica, sans-serif;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
 }
 
 .board-selector-section select {
-  width: 100%;
-  min-height: 42px;
-  padding: 0 0.75rem;
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  font: inherit;
+	width: 100%;
+	min-height: 48px;
+	padding: 0 2.75rem 0 0.9rem;
+	border: 1px solid #b7b7b7;
+	border-radius: 6px;
+	background-color: #ffffff;
+	color: #333333;
+	font: inherit;
+	cursor: pointer;
+}
+
+.board-selector-section select:hover {
+	border-color: #8b0000;
+}
+
+.board-selector-section select:focus-visible {
+	outline: 3px solid #f4c542;
+	outline-offset: 3px;
+	border-color: #590000;
+}
+
+/*
+  When there is only one available board year, there is no reason
+  to make the user interact with a one-option dropdown.
+*/
+
+.current-board-year {
+	width: fit-content;
+	margin-top: 2rem;
+	padding: 0.65rem 1rem;
+	border: 1px solid #d8d8d8;
+	border-radius: 999px;
+	background: #f7f7f7;
+	color: #590000;
+	font-family: "Raleway", Helvetica, sans-serif;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
 }
 
 /* Executive board */
 
 .executive-board-section {
-  margin-top: 2.5rem;
+	margin-top: 2.5rem;
 }
 
-.executive-board-section h2 {
-  margin: 0 0 1.5rem;
-  text-align: center;
-  font-size: clamp(1.3rem, 3vw, 2rem);
+.executive-board-heading {
+	margin-bottom: 2rem;
+	text-align: center;
 }
 
-.executive-board-section h2 span {
-  color: #8b1e2d;
+.executive-board-heading p {
+	margin: 0 0 0.35rem;
+	color: #666666;
+	font-family: "Raleway", Helvetica, sans-serif;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
 }
 
-/* Officer grid */
+.executive-board-heading h2 {
+	margin: 0;
+	color: #590000;
+	font-size: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+/* Officer cards */
 
 .officer-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(220px, 280px)
-  );
-  justify-content: center;
-  gap: 1.5rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+	gap: 1.5rem;
+	align-items: stretch;
 }
 
-/* Officer card */
-
 .officer-card {
-  width: 100%;
-  max-width: 280px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 6px;
+	overflow: hidden;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	background: #ffffff;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
 
 .officer-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center top;
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	object-position: center;
 }
 
-.officer-information {
-  padding: 1rem;
-  text-align: center;
+.officer-image-placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #f2eeee;
+	color: #590000;
 }
 
-.officer-information h3 {
-  margin: 0;
-  font-size: 1rem;
+.officer-image-placeholder span {
+	font-family: "Raleway", Helvetica, sans-serif;
+	font-size: 4rem;
+	font-weight: 700;
 }
 
-.officer-information p {
-  margin: 0.35rem 0 0;
-  font-size: 0.9rem;
-  color: #8b1e2d;
+.officer-info {
+	padding: 1.25rem;
+	text-align: center;
+}
+
+.officer-info h3 {
+	margin: 0;
+	color: #590000;
+	font-size: 1.2rem;
+}
+
+.officer-info p {
+	margin: 0.5rem 0 0;
+	color: #666666;
+	line-height: 1.5;
+}
+
+.no-board-members {
+	margin: 0;
+	padding: 2rem;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	background: #f7f7f7;
+	color: #666666;
+	text-align: center;
+}
+
+/* Tablet */
+
+@media screen and (max-width: 980px) {
+	.team-heading-section {
+		padding-top: 3rem;
+	}
+
+	.team-group-photo {
+		max-height: 500px;
+	}
 }
 
 /* Mobile */
 
-@media screen and (max-width: 520px) {
-  .team-main {
-    padding: 2rem 1rem 4rem;
-  }
+@media screen and (max-width: 736px) {
+	.team-main {
+		padding-bottom: 3rem;
+	}
 
-  .officer-grid {
-    grid-template-columns: 1fr;
-  }
+	.team-container {
+		width: min(100% - 1.5rem, 1100px);
+	}
 
-  .officer-card {
-    max-width: 320px;
-    justify-self: center;
-  }
+	.team-heading-section {
+		padding-top: 2.5rem;
+	}
+
+	.team-heading-description {
+		font-size: 0.95rem;
+	}
+
+	.team-photo-section {
+		margin-top: 2rem;
+	}
+
+	.team-group-photo {
+		max-height: 420px;
+	}
+
+	.board-selector-section {
+		width: min(100% - 1.5rem, 320px);
+	}
+
+	.officer-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.officer-card {
+		max-width: 420px;
+		width: 100%;
+		margin: 0 auto;
+	}
 }

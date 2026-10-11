@@ -1,0 +1,302 @@
+/* Preserve the original Raleway navigation identity from main.css */
+
+.mobile-menu-button {
+     display: none;
+}
+
+/* Desktop navigation */
+@media screen and (min-width: 981px) {
+     #header .links {
+          display: flex;
+          flex: 1;
+          height: inherit;
+          margin-left: 1.5em;
+          padding-left: 1.5em;
+          align-items: center;
+     }
+
+     #header .links ul {
+          display: flex;
+          width: auto;
+          height: 100%;
+          margin: 0 clamp(2rem, 6vw, 7rem) 0 auto;
+          padding: 0;
+          align-items: center;
+     }
+
+     #header .links ul li {
+          display: flex;
+          height: 100%;
+          margin-left: 1.5em;
+          padding-left: 1.5em;
+          align-items: center;
+          line-height: normal;
+     }
+
+     #header .links ul li:first-child {
+          margin-left: 0;
+          padding-left: 0;
+     }
+
+     #header .links .nav-link {
+          position: relative;
+
+          display: flex;
+          height: 100%;
+          padding: 0 0.25em;
+
+          align-items: center;
+
+          font-family: "Raleway", Helvetica, sans-serif;
+          font-size: 0.7em;
+          font-weight: 400;
+          letter-spacing: 0.25em;
+          line-height: 1;
+          text-transform: uppercase;
+
+          color: inherit;
+
+          transition:
+               color 220ms ease-out,
+               transform 220ms ease-out;
+     }
+
+     /*
+   * Animated underline.
+   * Starts in the center and eases outward on hover/focus.
+   */
+     #header .links .nav-link:not(.nav-link-join)::after {
+          content: "";
+
+          position: absolute;
+          left: 50%;
+          bottom: 0.8em;
+
+          width: 0;
+          height: 2px;
+
+          background: #8b0000;
+
+          transform: translateX(-50%);
+
+          transition:
+               width 240ms ease-out,
+               background-color 240ms ease-out;
+     }
+
+     #header .links .nav-link:not(.nav-link-join):hover,
+     #header .links .nav-link:not(.nav-link-join):focus-visible {
+          color: #590000;
+     }
+
+     #header .links .nav-link:not(.nav-link-join):hover::after,
+     #header .links .nav-link:not(.nav-link-join):focus-visible::after,
+     #header .links .nav-link-active:not(.nav-link-join)::after {
+          width: calc(100% - 0.5em);
+     }
+
+     #header .links .nav-link-active:not(.nav-link-join) {
+          color: #590000;
+     }
+
+     /* Primary Join action */
+     #header .links .nav-link-join {
+          height: auto;
+          min-height: 38px;
+
+          padding: 0.7em 1.4em;
+
+          border-radius: 5px;
+
+          background: #8b0000;
+          color: #ffffff;
+
+          font-weight: 700;
+
+          transition:
+               background-color 220ms ease-out,
+               transform 220ms ease-out,
+               box-shadow 220ms ease-out;
+     }
+
+     #header .links .nav-link-join:hover,
+     #header .links .nav-link-join:focus-visible {
+          background: #590000;
+          color: #ffffff;
+
+          transform: translateY(-1px);
+
+          box-shadow: 0 3px 8px rgba(89, 0, 0, 0.2);
+     }
+
+     #header .links .nav-link-join.nav-link-active {
+          background: #590000;
+          color: #ffffff;
+     }
+}
+
+/* Keyboard accessibility */
+#header .nav-link:focus-visible,
+#header .mobile-menu-button:focus-visible {
+     outline: 3px solid #f4c542;
+     outline-offset: 3px;
+}
+
+/* Mobile navigation */
+@media screen and (max-width: 980px) {
+     #header {
+          position: fixed;
+     }
+
+     #header .mobile-menu-button {
+          display: flex;
+
+          position: absolute;
+          top: 50%;
+          right: 1rem;
+
+          width: 44px;
+          height: 44px;
+
+          padding: 0;
+          border: 0;
+
+          background: transparent;
+          box-shadow: none;
+
+          transform: translateY(-50%);
+
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+
+          gap: 5px;
+
+          cursor: pointer;
+     }
+
+     #header .mobile-menu-button span {
+          display: block;
+
+          width: 22px;
+          height: 2px;
+
+          background: #590000;
+
+          transition: transform 200ms ease-out;
+     }
+
+     #header .links {
+          display: none;
+     }
+
+     #header .links.mobile-open {
+          display: block;
+
+          position: absolute;
+          top: 100%;
+          left: 0;
+
+          width: 100%;
+          height: auto;
+
+          margin: 0;
+          padding: 0;
+
+          background: #ffffff;
+
+          border-top: 1px solid rgba(160, 160, 160, 0.3);
+          border-bottom: 1px solid rgba(160, 160, 160, 0.3);
+
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+
+          z-index: 1000;
+     }
+
+     #header .links.mobile-open ul {
+          display: block;
+
+          width: 100%;
+
+          margin: 0;
+          padding: 0.75rem 1rem 1rem;
+     }
+
+     #header .links.mobile-open li {
+          display: block;
+
+          width: 100%;
+
+          margin: 0;
+          padding: 0;
+
+          border-left: 0;
+     }
+
+     #header .links.mobile-open .nav-link {
+          position: relative;
+
+          display: block;
+
+          width: 100%;
+
+          padding: 1rem 1.25rem;
+
+          font-family: "Raleway", Helvetica, sans-serif;
+          font-size: 0.75em;
+          font-weight: 400;
+          letter-spacing: 0.25em;
+          line-height: 1.5;
+          text-transform: uppercase;
+
+          transition: color 220ms ease-out;
+     }
+
+     #header .links.mobile-open .nav-link:not(.nav-link-join)::after {
+          content: "";
+
+          position: absolute;
+          left: 1.25rem;
+          bottom: 0.65rem;
+
+          width: 0;
+          height: 2px;
+
+          background: #8b0000;
+
+          transition: width 220ms ease-out;
+     }
+
+     #header .links.mobile-open .nav-link:not(.nav-link-join):hover,
+     #header .links.mobile-open .nav-link:not(.nav-link-join):focus-visible {
+          color: #590000;
+     }
+
+     #header .links.mobile-open .nav-link:not(.nav-link-join):hover::after,
+     #header .links.mobile-open .nav-link-active:not(.nav-link-join)::after {
+          width: 2.5rem;
+     }
+
+     #header .links.mobile-open .nav-link-join {
+          width: calc(100% - 2.5rem);
+
+          margin: 0.75rem 1.25rem;
+          padding: 0.9rem 1rem;
+
+          border-radius: 5px;
+
+          background: #8b0000;
+          color: #ffffff;
+
+          font-weight: 700;
+          text-align: center;
+
+          transition: background-color 220ms ease-out;
+     }
+
+     #header .links.mobile-open .nav-link-join:hover,
+     #header .links.mobile-open .nav-link-join:focus-visible {
+          background: #590000;
+          color: #ffffff;
+     }
+}

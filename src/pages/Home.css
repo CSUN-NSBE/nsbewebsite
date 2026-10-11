@@ -1,0 +1,432 @@
+/*
+ * HOME PAGE
+ *
+ * Preserve the original CSUN NSBE hero typography and positioning.
+ * Responsive rules only adapt the layout when necessary.
+ */
+
+/* Remove the template padding above the Home content. */
+#wrapper.home-page {
+     padding-top: 0;
+}
+
+/* =========================
+   Hero
+   ========================= */
+
+.home-hero {
+     position: relative;
+
+     /*
+   * Break the hero out of main.css's padded wrapper so the image
+   * reaches both viewport edges.
+   */
+     width: 100vw;
+     max-width: 100vw;
+
+     margin-left: 50%;
+     transform: translateX(-50%);
+
+     overflow: hidden;
+}
+
+/*
+ * Full-width landscape image.
+ */
+.home-hero__image {
+     display: block;
+
+     width: 100%;
+     height: auto;
+
+     margin: 0;
+     padding: 0;
+}
+
+/*
+ * Preserve the original hero text positioning.
+ */
+.home-hero__content {
+     position: absolute;
+
+     top: 50%;
+     left: 50%;
+
+     width: 90%;
+
+     transform: translate(-50%, -50%);
+
+     text-align: center;
+
+     font-family: "Times New Roman", Times, serif;
+     font-size: 2em;
+     font-weight: bold;
+
+     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+/*
+ * Preserve the original yellow chapter text.
+ * The negative top margin intentionally places it over the sky.
+ */
+.home-hero__chapter {
+     margin-bottom: 0.5em;
+     margin-top: -7em;
+
+     color: gold;
+
+     font-family: "Times New Roman", Times, serif;
+     font-size: 1.5em;
+     font-style: italic;
+     font-weight: bold;
+}
+
+/*
+ * Preserve the original main title styling.
+ */
+.home-hero__title {
+     margin-top: 0;
+
+     color: #ffffff;
+
+     font-family: "Times New Roman", Times, serif;
+     font-size: 2.6em;
+     font-weight: bold;
+
+     letter-spacing: normal;
+     line-height: normal;
+     text-transform: none;
+}
+
+/* =========================
+   Mission
+   ========================= */
+
+.home-mission {
+     margin-top: 5em;
+}
+
+.home-mission h2 {
+     color: #590000;
+     font-size: 2em;
+}
+
+.home-mission__layout {
+     display: flex;
+
+     width: 100%;
+     min-height: 260px;
+
+     align-items: center;
+
+     gap: 3rem;
+}
+
+.home-mission__content {
+     flex: 1 1 40%;
+}
+
+.home-mission__content p {
+     margin: 0;
+
+     font-size: 1.35em;
+     line-height: 1.7;
+}
+
+.home-mission__button {
+     margin-top: 2em;
+
+     font-size: 0.75em;
+}
+
+.home-mission__image-wrapper {
+     display: flex;
+
+     flex: 1 1 60%;
+
+     align-items: center;
+     justify-content: center;
+}
+
+.home-mission__image {
+     width: 100%;
+     max-width: 600px;
+     height: auto;
+
+     border-radius: 8px;
+
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   Get involved
+   ========================= */
+
+.home-involvement {
+     margin-top: 6em;
+     margin-bottom: 5em;
+}
+
+.home-involvement__intro {
+     max-width: 760px;
+
+     margin: 0 auto 2.5em;
+
+     text-align: center;
+}
+
+.home-involvement__eyebrow {
+     margin-bottom: 0.75em;
+
+     color: #700014;
+
+     font-size: 0.8em;
+     font-weight: bold;
+
+     letter-spacing: 0.16em;
+     text-transform: uppercase;
+}
+
+.home-involvement__intro h2 {
+     margin-bottom: 0.75em;
+
+     color: #590000;
+
+     font-size: 2em;
+}
+
+.home-involvement__intro>p:last-child {
+     margin: 0;
+
+     font-size: 1.15em;
+     line-height: 1.7;
+}
+
+.home-involvement__grid {
+     display: grid;
+
+     grid-template-columns: repeat(2, minmax(0, 1fr));
+
+     gap: 1.5em;
+
+     max-width: 950px;
+
+     margin: 0 auto;
+}
+
+.home-action-card {
+     display: flex;
+
+     padding: 2em;
+
+     flex-direction: column;
+     align-items: flex-start;
+
+     border: 1px solid #dedede;
+     border-radius: 12px;
+
+     background: #ffffff;
+
+     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.home-action-card__icon {
+     margin-bottom: 0.75em;
+
+     color: #590000;
+
+     font-size: 2em;
+}
+
+.home-action-card h3 {
+     margin-bottom: 0.6em;
+
+     color: #590000;
+
+     font-size: 1.5em;
+     text-transform: none;
+}
+
+.home-action-card p {
+     flex-grow: 1;
+
+     font-size: 1.05em;
+     line-height: 1.7;
+}
+
+.home-action-card__button {
+     margin-top: 1em;
+}
+
+/* =========================
+   Tablet
+   ========================= */
+
+/* =========================
+   Tablet / half-window
+   ========================= */
+
+@media screen and (max-width: 980px) {
+
+     /*
+   * The navigation switches to the hamburger at this width,
+   * so the hero typography needs to scale at the same breakpoint.
+   *
+   * Preserve the same visual composition:
+   * - gold chapter text over the sky
+   * - white NSBE title below it
+   * - centered over the campus image
+   */
+     .home-hero__content {
+          top: 50%;
+          width: 92%;
+          font-size: 1.35em;
+     }
+
+     .home-hero__chapter {
+          margin-top: -3em;
+          margin-bottom: 0.5em;
+          font-size: 1.5em;
+     }
+
+     .home-hero__title {
+          margin-top: 0;
+          font-size: 2.6em;
+          line-height: normal;
+     }
+
+     .home-mission {
+          margin-top: 3.5em;
+     }
+
+     .home-mission__layout {
+          gap: 2rem;
+     }
+}
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media screen and (max-width: 736px) {
+
+     /*
+   * On phones the image remains full-width, but receives a
+   * controlled height so the hero text remains readable.
+   */
+     .home-hero {
+          min-height: 420px;
+
+          background: #2a2225;
+     }
+
+     .home-hero__image {
+          width: 100%;
+          height: 420px;
+
+          object-fit: cover;
+          object-position: center;
+     }
+
+     .home-hero__content {
+          top: 50%;
+
+          width: calc(100% - 2rem);
+
+          font-size: 1em;
+     }
+
+     .home-hero__chapter {
+          margin-top: 0;
+          margin-bottom: 0.75rem;
+
+          font-size: clamp(1rem, 5vw, 1.35rem);
+
+          line-height: 1.3;
+     }
+
+     .home-hero__title {
+          margin-top: 0;
+
+          font-size: clamp(2rem, 9vw, 3.25rem);
+
+          line-height: 1.05;
+     }
+
+     /* Mission */
+
+     .home-mission {
+          margin-top: 3em;
+     }
+
+     .home-mission h2 {
+          font-size: 1.75em;
+     }
+
+     .home-mission__layout {
+          display: flex;
+
+          min-height: 0;
+
+          flex-direction: column;
+
+          gap: 2rem;
+     }
+
+     .home-mission__content,
+     .home-mission__image-wrapper {
+          width: 100%;
+
+          flex: none;
+     }
+
+     .home-mission__content p {
+          font-size: 1.05em;
+          line-height: 1.7;
+     }
+
+     .home-mission__button {
+          width: 100%;
+
+          margin-top: 1.75em;
+
+          text-align: center;
+     }
+
+     .home-mission__image {
+          max-width: 100%;
+     }
+
+     /* Get involved */
+
+     .home-involvement {
+          margin-top: 4em;
+          margin-bottom: 3em;
+     }
+
+     .home-involvement__intro {
+          margin-bottom: 2em;
+     }
+
+     .home-involvement__intro h2 {
+          font-size: 1.75em;
+     }
+
+     .home-involvement__intro>p:last-child {
+          font-size: 1em;
+     }
+
+     .home-involvement__grid {
+          grid-template-columns: 1fr;
+     }
+
+     .home-action-card {
+          padding: 1.5em;
+     }
+
+     .home-action-card__button {
+          width: 100%;
+
+          text-align: center;
+     }
+}
