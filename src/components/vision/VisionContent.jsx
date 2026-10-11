@@ -13,9 +13,9 @@ function VisionContent() {
                     margin: "1em auto",
                 }}
             >
-                NSBE's mission is "to increase the number of culturally responsible
+                NSBE&apos;s mission is &quot;to increase the number of culturally responsible
                 Black engineers who excel academically, succeed professionally, and
-                positively impact the community."
+                positively impact the community.&quot;
             </p>
 
             <h2

@@ -5,6 +5,8 @@ import "./Nav.css";
 const navLinks = [
      { to: "/team", label: "Team" },
      { to: "/vision", label: "Vision" },
+     { to: "/events", label: "Events" },
+     { to: "/resources", label: "Resources" },
      { to: "/sponsorship", label: "Sponsorship" },
      { to: "/join", label: "Join", highlight: true },
 ];
@@ -29,7 +31,9 @@ function Nav() {
                     className="mobile-menu-button"
                     aria-expanded={isMenuOpen}
                     aria-controls="primary-navigation"
-                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-label={
+                         isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+                    }
                     onClick={() => setIsMenuOpen((current) => !current)}
                >
                     <span></span>

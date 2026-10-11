@@ -41,7 +41,7 @@ function Contact() {
 
         {status === "success" ? (
           <p style={{ textAlign: "center", fontSize: "1.2em" }}>
-            Thanks for reaching out — we'll get back to you soon!
+            Thanks for reaching out — we&apos;ll get back to you soon!
           </p>
         ) : (
           <form onSubmit={handleSubmit}>

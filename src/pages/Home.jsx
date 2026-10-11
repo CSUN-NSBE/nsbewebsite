@@ -4,7 +4,7 @@ import "../assets/css/main.css";
 import "../assets/css/fontawesome-all.min.css";
 import "./Home.css";
 import csunlandscape from "../images/FORNSBEcsunlandscapepic.jpg";
-import eboard from "../images/team/2024-25/SP25/group/nsbe-ceb-group-sp25.webpz";
+import eboard from "../images/team/2024-25/SP25/group/nsbe-ceb-group-sp25.webp";
 
 function Home() {
 	return (
@@ -43,9 +43,9 @@ function Home() {
 								the United States.
 								<br />
 								<br />
-								NSBE's mission is "to increase the number of culturally
+								NSBE&apos;s mission is &quot;to increase the number of culturally
 								responsible Black engineers who excel academically, succeed
-								professionally, and positively impact the community."
+								professionally, and positively impact the community.&quot;
 							</p>
 
 							<Link to="/vision" className="button home-mission__button">
@@ -76,7 +76,7 @@ function Home() {
 						</h2>
 
 						<p>
-							Whether you're a student looking for community and professional
+							Whether you&apos;re a student looking for community and professional
 							growth or an organization interested in supporting Black
 							engineers, there is a place for you to get involved.
 						</p>
@@ -133,5 +133,6 @@ function Home() {
 }
 
 export default Home;
+
 
 
