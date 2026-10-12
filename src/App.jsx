@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Home from "./Pages/Home";
@@ -9,11 +10,12 @@ import Sponsorship from "./Pages/Sponsorship";
 import Events from "./Pages/Events";
 import Resources from "./Pages/Resources";
 
-function App() {
+function AnimatedRoutes() {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Nav />
-      <Routes>
+    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
         <Route path="/vision" element={<Vision />} />
@@ -21,6 +23,15 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/resources" element={<Resources />} />
       </Routes>
+    </AnimatePresence>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Nav />
+      <AnimatedRoutes />
       <Footer />
     </Router>
   );
