@@ -1,77 +1,76 @@
-import "../assets/css/fontawesome-all.min.css";
+import { motion, useReducedMotion } from "framer-motion";
+import PageTransition from "../components/PageTransition";
 
-// TODO: replace mailto/hrefs with real links once each resource has an
-// actual destination (internship board, scholarship list, booking link, etc.)
+// Most descriptions come from the Programs & Events pages of the CSUN-NSBE Sponsorship Package PDF.
+// TODO: confirm the "National NSBE membership" benefits against nsbe.org before publishing.
 const resources = [
-  {
-    icon: "fa-briefcase",
-    title: "Internships & Jobs",
-    description:
-      "Find internship opportunities and job postings from our industry partners.",
-  },
-  {
-    icon: "fa-graduation-cap",
-    title: "Scholarships",
-    description: "Find scholarships specifically designed to support Black students in STEM.",
-  },
-  {
-    icon: "fa-file-alt",
-    title: "Resume Reviews",
-    description: "Get your resume reviewed by professionals and chapter alumni.",
-  },
-  {
-    icon: "fa-hands-helping",
-    title: "Mentorship",
-    description: "Connect with alumni and industry professionals who will guide you on your journey.",
-  },
-  {
-    icon: "fa-chalkboard-teacher",
-    title: "Workshops",
-    description: "Attend workshops that build technical, soft, and leadership skills.",
-  },
-  {
-    icon: "fa-users",
-    title: "Conferences",
-    description: "Attend regional and national conferences to elevate your career.",
-  },
+  { title: "Resume reviews and practice interviews", body: "Professional development events cover resume reviews, practice interviews, and networking.", tag: "Throughout the academic year" },
+  { title: "Weekly study sessions", body: "Study halls three times a week give you a reliable place to study and collaborate with other members.", tag: "Three times a week" },
+  { title: "Academic excellence workshops", body: "Note-taking, test prep, Python, and 3D printing workshops, and more.", tag: "Chapter workshops" },
+  { title: "Recruiter access", body: "Recruitment events bring companies to speak with members, and career fairs at regional and national conferences connect members with companies hiring interns and full-time employees.", tag: "Recruitment events and career fairs" },
+  { title: "Conferences", body: "The Fall Regional Conference, Region 6 Leadership Conference, and Annual National Convention offer workshops, networking, and career development.", tag: "Regional and national" },
+  { title: "National NSBE membership", body: "Membership connects you to national scholarships, the NSBE Career Center, and discounted registration for conferences.", tag: "National" },
 ];
 
 function Resources() {
+  const reduceMotion = useReducedMotion();
+
+  const reveal = {
+    initial: { opacity: 0, y: reduceMotion ? 0 : 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" },
+    transition: { duration: 2, ease: [0.22, 1, 0.36, 1] },
+  };
+
+  const rise = (delay) => ({
+    initial: { opacity: 0, y: reduceMotion ? 0 : 18 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay: reduceMotion ? 0 : delay, ease: [0.16, 1, 0.3, 1] },
+  });
+
   return (
-    <div>
-      <section className="bg-black px-6 py-16 text-white">
-        <div className="mx-auto max-w-7xl">
-          <h1 className="text-4xl font-extrabold">Resources</h1>
-          <p className="mt-3 max-w-2xl text-white/80">
-            Tools and opportunities to help you grow academically, professionally, and personally.
-          </p>
-        </div>
-      </section>
+    <PageTransition>
+      <div className="bg-paper font-body text-ink">
+        <section className="mx-auto max-w-[1320px] px-[6vw] pb-16 pt-16 lg:pt-24">
+          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: reduceMotion ? 0 : 0.1, ease: [0.16, 1, 0.3, 1] }} style={{ transformOrigin: "left" }} className="h-0.5 w-20 bg-gold" />
+          <motion.span {...rise(0.18)} className="mt-6 block text-xs font-semibold tracking-wide text-brand">01 / Member toolkit</motion.span>
+          <motion.h1 {...rise(0.26)} className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.02] tracking-tight text-brand-dark sm:text-6xl lg:text-7xl">The support to get through. The access to go further.</motion.h1>
+          <motion.p {...rise(0.38)} className="mt-7 max-w-xl text-base leading-relaxed text-ink/70">Strong engineers need more than coursework. We connect members to timely opportunities, tested knowledge, and people invested in their progress.</motion.p>
+        </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-14">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {resources.map((resource) => (
-            <div key={resource.title} className="rounded-lg border border-gray-200 p-6">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-maroon/10 text-maroon">
-                <i className={`fas ${resource.icon}`} aria-hidden="true"></i>
+        <motion.section {...reveal} className="mx-auto grid max-w-[1320px] gap-10 border-t border-rule px-[6vw] py-24 lg:grid-cols-[0.75fr_1.65fr] lg:gap-16">
+          <div>
+            <span className="text-xs font-semibold text-brand">02 / Available now</span>
+            <p className="mt-6 max-w-[310px] text-sm leading-relaxed text-ink/70">Everything here runs through the chapter. Email us and we will point you to the next step.</p>
+            <a href="mailto:csun.nsbe@my.csun.edu?subject=CSUN%20NSBE%20member%20resources" className="group mt-6 inline-flex items-center gap-3 text-sm font-semibold text-brand-dark">
+              Email the chapter
+              <span className="h-px w-7 bg-brand transition-all group-hover:w-10" />
+            </a>
+          </div>
+          <div className="border-t-2 border-brand-dark">
+            {resources.map((item, index) => (
+              <div key={item.title} className="grid gap-3 border-b border-rule py-7 sm:grid-cols-[46px_1fr_1.4fr] sm:items-start sm:gap-6">
+                <span className="font-display text-xs font-semibold text-brand">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="font-display text-xl tracking-tight text-brand-dark">{item.title}</h3>
+                  <span className="mt-2 block text-xs text-muted">{item.tag}</span>
+                </div>
+                <p className="text-sm leading-relaxed text-muted">{item.body}</p>
               </div>
-              <h3 className="mb-2 font-bold text-maroon">{resource.title}</h3>
-              <p className="text-sm text-gray-600">{resource.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </motion.section>
 
-      <section className="bg-maroon px-6 py-10 text-center text-white">
-        <h2 className="mb-2 text-xl font-bold">Need something else?</h2>
-        <p className="mb-4 text-white/80">Reach out to us and we&apos;ll point you in the right direction.</p>
-         <a href="mailto:csun.nsbe@my.csun.edu"
-          className="inline-block rounded bg-white px-6 py-3 font-semibold text-maroon hover:bg-gray-100 transition-colors"
-        >
-          Contact Us
-        </a>
-      </section>
-    </div>
+        <motion.section {...reveal} className="bg-brand-dark px-[10vw] py-20 text-white">
+          <span className="text-xs font-semibold text-gold">03 / Need something else?</span>
+          <h2 className="mt-5 max-w-4xl font-display text-5xl leading-[1.02] tracking-tight sm:text-7xl">Tell us what would move you forward.</h2>
+          <div className="mt-12 flex flex-col items-start justify-between gap-7 border-t border-white/30 pt-7 sm:flex-row sm:items-center">
+            <p className="max-w-xl text-white/80">If a resource is missing from this list, we want to hear about it.</p>
+            <a href="mailto:csun.nsbe@my.csun.edu?subject=Member%20resource%20request" className="inline-flex min-h-[52px] items-center bg-paper px-6 text-sm font-semibold text-brand-dark transition-colors hover:bg-white">Send a resource request</a>
+          </div>
+        </motion.section>
+      </div>
+    </PageTransition>
   );
 }
 
