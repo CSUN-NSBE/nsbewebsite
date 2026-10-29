@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import { AnimatePresence } from "framer-motion";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import Home from "./Pages/Home";
-import Team from "./Pages/Team";
-import Vision from "./Pages/Vision";
-import Sponsorship from "./Pages/Sponsorship";
-import Events from "./Pages/Events";
-import Resources from "./Pages/Resources";
+import Home from "./pages/Home";
+import Team from "./pages/Team";
+import Vision from "./pages/Vision";
+import Sponsorship from "./pages/Sponsorship";
+import Events from "./pages/Events";
+import Resources from "./pages/Resources";
 
 function AnimatedRoutes() {
   const location = useLocation();

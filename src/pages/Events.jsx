@@ -25,9 +25,8 @@ const regionalPrograms = [
 function ProgramList({ items }) {
   return (
     <div className="border-t-2 border-brand-dark">
-      {items.map((item, index) => (
-        <div key={item.title} className="grid gap-3 border-b border-rule py-7 sm:grid-cols-[46px_1fr_1.4fr] sm:items-start sm:gap-6">
-          <span className="font-display text-xs font-semibold text-brand">{String(index + 1).padStart(2, "0")}</span>
+      {items.map((item) => (
+        <div key={item.title} className="grid gap-3 border-b border-rule py-7 sm:grid-cols-[1fr_1.4fr] sm:items-start sm:gap-6">
           <h3 className="font-display text-xl tracking-tight text-brand-dark">{item.title}</h3>
           <p className="text-sm leading-relaxed text-muted">{item.body}</p>
         </div>
@@ -59,7 +58,7 @@ function Events() {
       <div className="bg-paper font-body text-ink">
         <section className="mx-auto max-w-[1320px] px-[6vw] pb-16 pt-16 lg:pt-24">
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: reduceMotion ? 0 : 0.1, ease: [0.16, 1, 0.3, 1] }} style={{ transformOrigin: "left" }} className="h-0.5 w-20 bg-gold" />
-          <motion.span {...rise(0.18)} className="mt-6 block text-xs font-semibold tracking-wide text-brand">01 / Gather with purpose</motion.span>
+          <motion.span {...rise(0.18)} className="mt-6 block text-xs font-semibold tracking-wide text-brand">Gather with purpose</motion.span>
           <motion.h1 {...rise(0.26)} className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.02] tracking-tight text-brand-dark sm:text-6xl lg:text-7xl">Learn together. Meet the industry. Build community.</motion.h1>
           <motion.p {...rise(0.38)} className="mt-7 max-w-xl text-base leading-relaxed text-ink/70">Our calendar balances the complete student experience, from focused study sessions to recruiter access and the moments that turn classmates into community.</motion.p>
         </section>
@@ -100,13 +99,13 @@ function Events() {
         </motion.section>
 
         <motion.section {...reveal} className="mx-auto max-w-[1320px] px-[6vw] pb-24">
-          <span className="text-xs font-semibold text-brand">02 / Chapter events</span>
+          <span className="text-xs font-semibold text-brand">Chapter events</span>
           <h2 className="mb-12 mt-2 max-w-3xl font-display text-4xl tracking-tight text-brand-dark sm:text-5xl">What we run for members.</h2>
           <ProgramList items={chapterPrograms} />
         </motion.section>
 
         <motion.section {...reveal} className="mx-auto max-w-[1320px] px-[6vw] pb-24">
-          <span className="text-xs font-semibold text-brand">03 / Regional and national</span>
+          <span className="text-xs font-semibold text-brand">Regional and national</span>
           <h2 className="mb-12 mt-2 max-w-3xl font-display text-4xl tracking-tight text-brand-dark sm:text-5xl">Where the chapter connects beyond CSUN.</h2>
           <ProgramList items={regionalPrograms} />
         </motion.section>
@@ -116,3 +115,4 @@ function Events() {
 }
 
 export default Events;
+

@@ -6,7 +6,7 @@
 export const events = [
   {
     id: "alumni-dinner",
-    date: { month: "MAY", day: "05" },
+    date: { month: "MAY", day: "5" },
     title: "CSUN-NSBE Alumni Dinner",
     time: "6:00 PM - 10:00 PM",
     location: "Hanoo BBQ - Northridge",
